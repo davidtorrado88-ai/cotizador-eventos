@@ -1,0 +1,65 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model EventType {
+  id       Int       @id @default(autoincrement())
+  name     String
+  slug     String    @unique
+  packages Package[]
+  quotes   Quote[]
+}
+
+model Package {
+  id          Int       @id @default(autoincrement())
+  name        String
+  description String
+  basePrice   Float
+  eventTypeId Int
+  eventType   EventType @relation(fields: [eventTypeId], references: [id])
+  features    String    // JSON array of included features
+  quotes      Quote[]
+}
+
+model Service {
+  id          Int            @id @default(autoincrement())
+  name        String
+  description String
+  price       Float
+  category    String
+  quoteItems  QuoteService[]
+}
+
+model Quote {
+  id             Int            @id @default(autoincrement())
+  clientName     String
+  clientEmail    String
+  clientPhone    String
+  eventDate      String
+  eventLocation  String
+  guestCount     Int
+  budgetMin      Float
+  budgetMax      Float
+  eventTypeId    Int
+  eventType      EventType      @relation(fields: [eventTypeId], references: [id])
+  packageId      Int
+  package        Package        @relation(fields: [packageId], references: [id])
+  services       QuoteService[]
+  totalPrice     Float
+  status         String         @default("pending")
+  createdAt      DateTime       @default(now())
+}
+
+model QuoteService {
+  id        Int     @id @default(autoincrement())
+  quoteId   Int
+  quote     Quote   @relation(fields: [quoteId], references: [id])
+  serviceId Int
+  service   Service @relation(fields: [serviceId], references: [id])
+  quantity  Int     @default(1)
+}
