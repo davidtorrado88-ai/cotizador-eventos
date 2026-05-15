@@ -1,8 +1,3 @@
-Loaded Prisma config from prisma.config.ts.
-
--- CreateSchema
-CREATE SCHEMA IF NOT EXISTS "public";
-
 -- CreateTable
 CREATE TABLE "EventType" (
     "id" SERIAL NOT NULL,
