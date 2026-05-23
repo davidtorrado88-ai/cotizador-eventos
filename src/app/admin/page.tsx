@@ -19,8 +19,8 @@ export default function AdminPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600" />
+      <div className="min-h-screen bg-[#0a0a0f] flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-400" />
       </div>
     );
   }
@@ -29,15 +29,15 @@ export default function AdminPage() {
   const pendingQuotes = quotes.filter((q) => q.status === "pending").length;
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="bg-white border-b">
+    <div className="min-h-screen bg-[#0a0a0f]">
+      <div className="bg-gray-900 border-b border-gray-800">
         <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-          <h1 className="text-xl font-bold text-gray-800">
+          <h1 className="text-xl font-bold text-gray-100">
             Panel de Administración
           </h1>
           <a
             href="/"
-            className="text-sm text-indigo-600 hover:text-indigo-800"
+            className="text-sm text-indigo-400 hover:text-indigo-300"
           >
             ← Volver al inicio
           </a>
@@ -47,30 +47,30 @@ export default function AdminPage() {
       <div className="max-w-6xl mx-auto px-4 py-8">
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-          <div className="bg-white rounded-xl p-6 border border-gray-200">
-            <div className="text-sm text-gray-500">Total cotizaciones</div>
-            <div className="text-3xl font-bold text-gray-800">
+          <div className="bg-gray-900 rounded-xl p-6 border border-gray-800">
+            <div className="text-sm text-gray-400">Total cotizaciones</div>
+            <div className="text-3xl font-bold text-gray-100">
               {quotes.length}
             </div>
           </div>
-          <div className="bg-white rounded-xl p-6 border border-gray-200">
-            <div className="text-sm text-gray-500">Pendientes</div>
-            <div className="text-3xl font-bold text-amber-600">
+          <div className="bg-gray-900 rounded-xl p-6 border border-gray-800">
+            <div className="text-sm text-gray-400">Pendientes</div>
+            <div className="text-3xl font-bold text-amber-400">
               {pendingQuotes}
             </div>
           </div>
-          <div className="bg-white rounded-xl p-6 border border-gray-200">
-            <div className="text-sm text-gray-500">Valor total cotizado</div>
-            <div className="text-3xl font-bold text-green-600">
+          <div className="bg-gray-900 rounded-xl p-6 border border-gray-800">
+            <div className="text-sm text-gray-400">Valor total cotizado</div>
+            <div className="text-3xl font-bold text-green-400">
               {formatCOP(totalRevenue)}
             </div>
           </div>
         </div>
 
         {/* Quotes Table */}
-        <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-          <div className="px-6 py-4 border-b border-gray-200">
-            <h2 className="text-lg font-semibold text-gray-800">
+        <div className="bg-gray-900 rounded-xl border border-gray-800 overflow-hidden">
+          <div className="px-6 py-4 border-b border-gray-800">
+            <h2 className="text-lg font-semibold text-gray-100">
               Cotizaciones recibidas
             </h2>
           </div>
@@ -81,68 +81,68 @@ export default function AdminPage() {
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full">
-                <thead className="bg-gray-50">
+                <thead className="bg-gray-800/50">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase">
                       #
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase">
                       Cliente
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase">
                       Evento
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase">
                       Paquete
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase">
                       Fecha evento
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase">
                       Total
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase">
                       Estado
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase">
                       Creada
                     </th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-200">
+                <tbody className="divide-y divide-gray-800">
                   {quotes.map((q) => (
-                    <tr key={q.id} className="hover:bg-gray-50">
+                    <tr key={q.id} className="hover:bg-gray-800/50">
                       <td className="px-6 py-4 text-sm text-gray-500">
                         {q.id}
                       </td>
                       <td className="px-6 py-4">
-                        <div className="text-sm font-medium text-gray-800">
+                        <div className="text-sm font-medium text-gray-200">
                           {q.clientName}
                         </div>
                         <div className="text-xs text-gray-500">
                           {q.clientEmail}
                         </div>
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-700">
+                      <td className="px-6 py-4 text-sm text-gray-300">
                         {q.eventType.name}
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-700">
+                      <td className="px-6 py-4 text-sm text-gray-300">
                         {q.package.name}
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-700">
+                      <td className="px-6 py-4 text-sm text-gray-300">
                         {q.eventDate}
                       </td>
-                      <td className="px-6 py-4 text-sm font-semibold text-gray-800">
+                      <td className="px-6 py-4 text-sm font-semibold text-gray-200">
                         {formatCOP(q.totalPrice)}
                       </td>
                       <td className="px-6 py-4">
                         <span
                           className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${
                             q.status === "pending"
-                              ? "bg-amber-100 text-amber-700"
+                              ? "bg-amber-900/50 text-amber-400"
                               : q.status === "approved"
-                                ? "bg-green-100 text-green-700"
-                                : "bg-gray-100 text-gray-700"
+                                ? "bg-green-900/50 text-green-400"
+                                : "bg-gray-800 text-gray-400"
                           }`}
                         >
                           {q.status === "pending"

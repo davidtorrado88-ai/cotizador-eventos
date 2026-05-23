@@ -126,8 +126,8 @@ function ResultadoContent() {
 
   if (!quote) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600" />
+      <div className="min-h-screen bg-[#0a0a0f] flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-400" />
       </div>
     );
   }
@@ -135,58 +135,58 @@ function ResultadoContent() {
   const features: string[] = JSON.parse(quote.package.features);
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4">
+    <div className="min-h-screen bg-[#0a0a0f] py-12 px-4">
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-8">
           <div className="text-5xl mb-4">🎉</div>
-          <h1 className="text-3xl font-bold text-gray-800">
+          <h1 className="text-3xl font-bold text-gray-100">
             ¡Cotización generada!
           </h1>
-          <p className="text-gray-500 mt-2">
+          <p className="text-gray-400 mt-2">
             Cotización #{quote.id} - Te contactaremos pronto
           </p>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 divide-y">
+        <div className="bg-gray-900 rounded-xl border border-gray-700 divide-y divide-gray-700">
           <div className="p-6">
-            <h3 className="text-sm font-semibold text-gray-500 uppercase mb-3">
+            <h3 className="text-sm font-semibold text-gray-400 uppercase mb-3">
               Datos del evento
             </h3>
             <div className="grid grid-cols-2 gap-y-2 text-sm">
-              <div className="text-gray-500">Cliente</div>
-              <div className="text-gray-800 font-medium">
+              <div className="text-gray-400">Cliente</div>
+              <div className="text-gray-100 font-medium">
                 {quote.clientName}
               </div>
-              <div className="text-gray-500">Tipo de evento</div>
-              <div className="text-gray-800">{quote.eventType.name}</div>
-              <div className="text-gray-500">Fecha</div>
-              <div className="text-gray-800">{quote.eventDate}</div>
-              <div className="text-gray-500">Lugar</div>
-              <div className="text-gray-800">{quote.eventLocation}</div>
-              <div className="text-gray-500">Invitados</div>
-              <div className="text-gray-800">{quote.guestCount}</div>
+              <div className="text-gray-400">Tipo de evento</div>
+              <div className="text-gray-200">{quote.eventType.name}</div>
+              <div className="text-gray-400">Fecha</div>
+              <div className="text-gray-200">{quote.eventDate}</div>
+              <div className="text-gray-400">Lugar</div>
+              <div className="text-gray-200">{quote.eventLocation}</div>
+              <div className="text-gray-400">Invitados</div>
+              <div className="text-gray-200">{quote.guestCount}</div>
             </div>
           </div>
 
           <div className="p-6">
-            <h3 className="text-sm font-semibold text-gray-500 uppercase mb-3">
+            <h3 className="text-sm font-semibold text-gray-400 uppercase mb-3">
               Paquete: {quote.package.name}
             </h3>
             <ul className="space-y-1 mb-3">
               {features.map((f) => (
-                <li key={f} className="text-sm text-gray-600 flex gap-2">
-                  <span className="text-green-500">✓</span> {f}
+                <li key={f} className="text-sm text-gray-300 flex gap-2">
+                  <span className="text-green-400">✓</span> {f}
                 </li>
               ))}
             </ul>
-            <div className="text-right font-semibold text-gray-800">
+            <div className="text-right font-semibold text-gray-200">
               {formatCOP(quote.package.basePrice)}
             </div>
           </div>
 
           {quote.services.length > 0 && (
             <div className="p-6">
-              <h3 className="text-sm font-semibold text-gray-500 uppercase mb-3">
+              <h3 className="text-sm font-semibold text-gray-400 uppercase mb-3">
                 Servicios adicionales
               </h3>
               <div className="space-y-2">
@@ -195,8 +195,8 @@ function ResultadoContent() {
                     key={qs.service.id}
                     className="flex justify-between text-sm"
                   >
-                    <span className="text-gray-700">{qs.service.name}</span>
-                    <span className="text-gray-800 font-medium">
+                    <span className="text-gray-300">{qs.service.name}</span>
+                    <span className="text-gray-200 font-medium">
                       {formatCOP(qs.service.price)}
                     </span>
                   </div>
@@ -205,12 +205,12 @@ function ResultadoContent() {
             </div>
           )}
 
-          <div className="p-6 bg-indigo-50 rounded-b-xl">
+          <div className="p-6 bg-indigo-950/50 rounded-b-xl">
             <div className="flex justify-between items-center">
-              <span className="text-lg font-bold text-gray-800">
+              <span className="text-lg font-bold text-gray-100">
                 Total estimado
               </span>
-              <span className="text-2xl font-bold text-indigo-600">
+              <span className="text-2xl font-bold text-indigo-400">
                 {formatCOP(quote.totalPrice)}
               </span>
             </div>
@@ -221,13 +221,13 @@ function ResultadoContent() {
           <button
             onClick={downloadPDF}
             disabled={generating}
-            className="px-6 py-3 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors disabled:bg-gray-300"
+            className="px-6 py-3 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-500 transition-colors disabled:bg-gray-700 disabled:text-gray-500"
           >
             {generating ? "Generando..." : "📄 Descargar PDF"}
           </button>
           <a
             href="/cotizar"
-            className="px-6 py-3 bg-gray-100 text-gray-700 rounded-lg font-medium hover:bg-gray-200 transition-colors"
+            className="px-6 py-3 bg-gray-800 text-gray-300 rounded-lg font-medium hover:bg-gray-700 transition-colors"
           >
             Nueva cotización
           </a>
@@ -241,8 +241,8 @@ export default function ResultadoPage() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600" />
+        <div className="min-h-screen bg-[#0a0a0f] flex items-center justify-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-400" />
         </div>
       }
     >
